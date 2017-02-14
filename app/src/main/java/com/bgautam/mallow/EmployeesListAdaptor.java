@@ -1,10 +1,16 @@
 package com.bgautam.mallow;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+import com.bgautam.mallow.network.CustomVolleyRequestQueue;
+import com.bgautam.mallow.pojo.Employee;
 
 import java.util.List;
 
@@ -14,9 +20,11 @@ import java.util.List;
 public class EmployeesListAdaptor extends RecyclerView.Adapter<EmployeesListAdaptor.MyViewHolder> {
 
     private List<Employee> employeeDetails;
+    private ImageLoader mImageLoader;
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView firstName, lastName, designation, city;
+        public NetworkImageView networkImageView;
 
         public MyViewHolder(View view) {
             super(view);
@@ -24,12 +32,16 @@ public class EmployeesListAdaptor extends RecyclerView.Adapter<EmployeesListAdap
             lastName = (TextView) view.findViewById(R.id.lastName);
             designation = (TextView) view.findViewById(R.id.designation);
             city = (TextView) view.findViewById(R.id.city);
+            networkImageView = (NetworkImageView) view.findViewById(R.id.networkImageView);
         }
 
     }
 
-    public EmployeesListAdaptor(List<Employee> kings) {
+    public EmployeesListAdaptor(List<Employee> kings, Context context) {
         this.employeeDetails = kings;
+        mImageLoader = CustomVolleyRequestQueue.getInstance(context)
+                .getImageLoader();
+
     }
 
     @Override
@@ -47,6 +59,16 @@ public class EmployeesListAdaptor extends RecyclerView.Adapter<EmployeesListAdap
         holder.lastName.setText(employee.getLastName());
         holder.designation.setText(employee.getDesignation());
         holder.city.setText(employee.getCity());
+
+        // Instantiate the RequestQueue.
+
+        //Image URL - This can point to any image file supported by Android
+        final String url = "http://goo.gl/0rkaBz";
+        mImageLoader.get(url, ImageLoader.getImageListener(holder.networkImageView,
+                R.mipmap.ic_launcher, android.R.drawable
+                        .ic_dialog_alert));
+        holder.networkImageView.setImageUrl(url, mImageLoader);
+
     }
 
     @Override

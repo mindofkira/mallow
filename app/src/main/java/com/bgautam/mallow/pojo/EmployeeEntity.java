@@ -1,5 +1,5 @@
 
-package com.bgautam.mallow;
+package com.bgautam.mallow.pojo;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

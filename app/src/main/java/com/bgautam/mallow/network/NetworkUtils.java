@@ -1,8 +1,9 @@
-package com.bgautam.mallow;
+package com.bgautam.mallow.network;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+;import com.bgautam.mallow.App.Application;
 
 /**
  * Created by gautam on 15/02/17.

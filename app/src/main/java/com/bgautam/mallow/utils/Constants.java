@@ -1,4 +1,4 @@
-package com.bgautam.mallow;
+package com.bgautam.mallow.utils;
 
 /**
  * Created by gautam on 15/02/17.

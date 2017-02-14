@@ -1,5 +1,5 @@
 
-package com.bgautam.mallow;
+package com.bgautam.mallow.pojo;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

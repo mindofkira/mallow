@@ -1,8 +1,8 @@
-package com.bgautam.mallow;
+package com.bgautam.mallow.App;
 
 import android.content.Context;
 
-class Application extends android.app.Application {
+public class Application extends android.app.Application {
 
     private static Context mContext;
 
