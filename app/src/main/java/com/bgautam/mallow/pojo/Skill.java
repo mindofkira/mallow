@@ -1,11 +1,13 @@
 
 package com.bgautam.mallow.pojo;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Skill {
+import java.io.Serializable;
+import java.util.List;
+
+public class Skill  implements Serializable{
 
     @SerializedName("technical")
     @Expose

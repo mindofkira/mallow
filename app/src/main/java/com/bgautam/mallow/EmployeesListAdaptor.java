@@ -1,6 +1,7 @@
 package com.bgautam.mallow;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.bgautam.mallow.App.Application;
 import com.bgautam.mallow.network.CustomVolleyRequestQueue;
 import com.bgautam.mallow.pojo.Employee;
 
@@ -22,7 +24,7 @@ public class EmployeesListAdaptor extends RecyclerView.Adapter<EmployeesListAdap
     private List<Employee> employeeDetails;
     private ImageLoader mImageLoader;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView firstName, lastName, designation, city;
         public NetworkImageView networkImageView;
 
@@ -33,8 +35,18 @@ public class EmployeesListAdaptor extends RecyclerView.Adapter<EmployeesListAdap
             designation = (TextView) view.findViewById(R.id.designation);
             city = (TextView) view.findViewById(R.id.city);
             networkImageView = (NetworkImageView) view.findViewById(R.id.networkImageView);
+            this.itemView.setOnClickListener(this);
+
         }
 
+        @Override
+        public void onClick(View v) {
+            Employee data =  employeeDetails.get(this.getLayoutPosition());
+            Intent intent = new Intent(Application.getContext(), DetailsActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("Employee",data);
+            Application.getContext().startActivity(intent);
+        }
     }
 
     public EmployeesListAdaptor(List<Employee> kings, Context context) {

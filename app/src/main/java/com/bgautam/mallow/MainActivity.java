@@ -29,6 +29,8 @@ import org.json.JSONArray;
 
 public class MainActivity extends AppCompatActivity {
 
+    private  EmployeeEntity[] employeeDetails;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
                         try {
                             Gson gson = new Gson();
-                            EmployeeEntity[] employeeDetails = gson.fromJson(response.toString(), EmployeeEntity[].class);
+                            employeeDetails = gson.fromJson(response.toString(), EmployeeEntity[].class);
                             Log.i("TAG", "Success from API - Response JSON : " + employeeDetails.toString());
 
                             final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -102,9 +104,10 @@ public class MainActivity extends AppCompatActivity {
                             recyclerView.setItemAnimator(new DefaultItemAnimator());
                             Asycdialog.dismiss();
                             recyclerView.setAdapter(mAdapter);
-                            
-                        }catch(Exception e) {
+
+                        } catch(Exception e) {
                             e.printStackTrace();
+                            Log.e(MainActivity.class.toString(),"Error while parsing the response. "+e.toString());
                         }
                     }
                 },
@@ -112,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Asycdialog.dismiss();
-                        Log.d("Error.Response", error.toString());
+                        Log.e(MainActivity.class.toString(),"Negative response from the server. "+error.toString());
                     }
                 }
         );
