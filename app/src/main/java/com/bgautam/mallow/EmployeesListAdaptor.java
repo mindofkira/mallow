@@ -63,11 +63,10 @@ public class EmployeesListAdaptor extends RecyclerView.Adapter<EmployeesListAdap
         // Instantiate the RequestQueue.
 
         //Image URL - This can point to any image file supported by Android
-        final String url = "http://goo.gl/0rkaBz";
-        mImageLoader.get(url, ImageLoader.getImageListener(holder.networkImageView,
+        mImageLoader.get(employee.getImageURL(), ImageLoader.getImageListener(holder.networkImageView,
                 R.mipmap.ic_launcher, android.R.drawable
                         .ic_dialog_alert));
-        holder.networkImageView.setImageUrl(url, mImageLoader);
+        holder.networkImageView.setImageUrl(employee.getImageURL(), mImageLoader);
 
     }
 

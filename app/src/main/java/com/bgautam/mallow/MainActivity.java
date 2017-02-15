@@ -1,5 +1,6 @@
 package com.bgautam.mallow;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -79,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
     private void fetchData() {
 
         RequestQueue queue = Volley.newRequestQueue(Application.getContext());
+        final ProgressDialog Asycdialog = new ProgressDialog(this);
+        Asycdialog.setMessage("Loading...");
+        Asycdialog.setTitle("Please Wait");
+        Asycdialog.show();
 
         JsonArrayRequest getRequest = new JsonArrayRequest(Request.Method.GET, Constants.EMPLOYEE_ENDPOINT_URL, null,
                 new Response.Listener<JSONArray>() {
@@ -95,9 +100,9 @@ public class MainActivity extends AppCompatActivity {
                             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                             recyclerView.setLayoutManager(mLayoutManager);
                             recyclerView.setItemAnimator(new DefaultItemAnimator());
+                            Asycdialog.dismiss();
                             recyclerView.setAdapter(mAdapter);
-
-
+                            
                         }catch(Exception e) {
                             e.printStackTrace();
                         }
@@ -106,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Asycdialog.dismiss();
                         Log.d("Error.Response", error.toString());
                     }
                 }
