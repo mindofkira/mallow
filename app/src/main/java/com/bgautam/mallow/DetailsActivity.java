@@ -8,6 +8,9 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.bgautam.mallow.network.CustomVolleyRequestQueue;
 import com.bgautam.mallow.pojo.Employee;
+import com.bgautam.mallow.pojo.Skill;
+
+import java.util.List;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -28,6 +31,7 @@ public class DetailsActivity extends AppCompatActivity {
     private TextView nationality;
     private TextView language;
     private TextView techSkillSet;
+    private TextView extraSkillSet;
 
 
 
@@ -61,6 +65,25 @@ public class DetailsActivity extends AppCompatActivity {
 
         nationality.setText(data.getNationality());
         language.setText(data.getLanguage());
+        List<Skill> skills = data.getSkills();
+        String skillText =  "";
+        String extraSkillText =  "";
+
+        for (Skill skill : skills) {
+
+            if (skill.getTechnical() != null) {
+                skillText += skill.getTechnical();
+                skillText += ",";
+            }
+
+            if(skill.getExtraCurricular()!=null) {
+                extraSkillText += skill.getExtraCurricular();
+                extraSkillText += ",";
+            }
+        }
+
+        techSkillSet.setText(skillText);
+        extraSkillSet.setText(extraSkillText);
 
     }
 
@@ -90,6 +113,7 @@ public class DetailsActivity extends AppCompatActivity {
         nationality = (TextView)findViewById(R.id.nationalityText);
         language = (TextView)findViewById(R.id.languageText);
         techSkillSet = (TextView)findViewById(R.id.technicalSkillSetText);
+        extraSkillSet = (TextView)findViewById(R.id.extraCurricularSkillSetText);
 
     }
 }

@@ -3,10 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.bgautam.mallow.MainActivity">
 
 <RelativeLayout
@@ -37,16 +35,20 @@
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="match_parent">
 
             <TextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="First Name"
                 android:id="@+id/firsName"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:ellipsize="end"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
@@ -56,70 +58,84 @@
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="match_parent">
 
             <TextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Last Name"
                 android:id="@+id/lastName"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
+                android:ellipsize="end"
+                android:layout_marginLeft="10dp"
                 android:id="@+id/lastNameText"
                 android:layout_column="1" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="match_parent">
 
             <TextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Address"
                 android:id="@+id/address"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
+                android:ellipsize="end"
+                android:layout_marginLeft="10dp"
                 android:id="@+id/addressText"
                 android:layout_column="1" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="match_parent">
 
             <TextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="City"
                 android:id="@+id/city"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
+                android:layout_marginLeft="10dp"
+                android:ellipsize="end"
                 android:id="@+id/cityText"
                 android:layout_column="1" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="match_parent">
 
             <TextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="ZipCode"
                 android:id="@+id/zipcode"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -127,37 +143,46 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
                 android:id="@+id/zipcodeText"
+                android:ellipsize="end"
+                android:layout_marginLeft="10dp"
                 android:layout_column="1" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+
             android:layout_height="match_parent">
 
             <TextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Gender"
                 android:id="@+id/gender"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
+                android:layout_marginLeft="10dp"
                 android:id="@+id/genderText"
+                android:ellipsize="end"
                 android:layout_column="1" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="match_parent">
 
             <TextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Date Of Birth"
                 android:id="@+id/dob"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -165,138 +190,168 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
                 android:id="@+id/dobText"
+                android:layout_marginLeft="10dp"
+                android:ellipsize="end"
                 android:layout_column="1" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="match_parent">
 
             <TextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Designation"
                 android:id="@+id/designation"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
                 android:id="@+id/designationText"
+                android:ellipsize="end"
                 android:layout_column="1" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="match_parent">
 
             <TextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Phone Number"
                 android:id="@+id/phone"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
                 android:id="@+id/phoneText"
+                android:ellipsize="end"
                 android:layout_column="1" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="match_parent">
 
             <TextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Email Address"
                 android:id="@+id/email"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
                 android:id="@+id/emailText"
+                android:ellipsize="end"
                 android:layout_column="1" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="match_parent">
 
             <TextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Nationality"
                 android:id="@+id/nationality"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
                 android:id="@+id/nationalityText"
+                android:ellipsize="end"
                 android:layout_column="1" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="match_parent">
 
             <TextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Language"
                 android:id="@+id/language"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
+                android:ellipsize="end"
                 android:id="@+id/languageText"
                 android:layout_column="1" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="match_parent">
 
             <TextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Technical Skill Set"
                 android:id="@+id/technicalSkillSet"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
+                android:ellipsize="end"
                 android:id="@+id/technicalSkillSetText"
                 android:layout_column="1" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="match_parent">
 
             <TextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Extra Skill Set"
                 android:id="@+id/extraCurricularSkillSet"
-                android:layout_column="0" />
+                android:layout_column="0"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
+                android:layout_marginLeft="10dp"
+                android:ellipsize="end"
                 android:id="@+id/extraCurricularSkillSetText"
                 android:layout_column="1" />
         </TableRow>
