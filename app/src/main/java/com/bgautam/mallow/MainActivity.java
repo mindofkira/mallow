@@ -49,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        Log.d(MainActivity.class.toString(),"employeeDetails : "+employeeDetails);
-
         if (NetworkUtils.isConnected()) {
             if(employeeDetails == null) {
                 fetchData();
@@ -106,13 +104,11 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             Gson gson = new Gson();
                             employeeDetails = gson.fromJson(response.toString(), EmployeeEntity[].class);
-                            Log.d(MainActivity.class.toString(),"****employeeDetails : "+employeeDetails);
                             Log.i("TAG", "Success from API - Response JSON : " + employeeDetails.toString());
                             setDataInAdapter();
                             Asycdialog.dismiss();
 
                         } catch (Exception e) {
-                            e.printStackTrace();
                             Log.e(MainActivity.class.toString(), "Error while parsing the response. " + e.toString());
                           }
                     }
