@@ -29,14 +29,25 @@ import org.json.JSONArray;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static EmployeeEntity[] employeeDetails;
+    private EmployeeEntity[] employeeDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(savedInstanceState!=null) {
+            employeeDetails = (EmployeeEntity[] ) savedInstanceState.get("EMPLOYEES");
+        }
+
         loadData();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putSerializable("EMPLOYEES", employeeDetails);
+        super.onSaveInstanceState(outState);
+
     }
 
     private void setDataInAdapter() {
@@ -68,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setTitle("Internet Access Needed");
         builder.setPositiveButton("Turn On", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                ctx.startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+                ctx.startActivity(new Intent(Settings.ACTION_SETTINGS));
             }
         });
 
