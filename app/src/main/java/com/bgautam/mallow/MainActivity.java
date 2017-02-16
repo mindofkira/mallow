@@ -19,7 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.bgautam.mallow.App.Application;
+import com.bgautam.mallow.app.Application;
 import com.bgautam.mallow.network.NetworkUtils;
 import com.bgautam.mallow.pojo.EmployeeEntity;
 import com.bgautam.mallow.utils.Constants;
@@ -29,18 +29,34 @@ import org.json.JSONArray;
 
 public class MainActivity extends AppCompatActivity {
 
-    private  EmployeeEntity[] employeeDetails;
+    private static EmployeeEntity[] employeeDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         loadData();
     }
 
+    private void setDataInAdapter() {
+        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        EmployeesListAdaptor mAdapter = new EmployeesListAdaptor(employeeDetails[0].getEmployee(), Application.getContext());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
+    }
+
     private void loadData() {
-        if(NetworkUtils.isConnected()) {
-            fetchData();
+        Log.d(MainActivity.class.toString(),"employeeDetails : "+employeeDetails);
+
+        if (NetworkUtils.isConnected()) {
+            if(employeeDetails == null) {
+                fetchData();
+            } else {
+                setDataInAdapter();
+            }
         } else {
             showNoConnectionDialog(this);
         }
@@ -53,23 +69,19 @@ public class MainActivity extends AppCompatActivity {
         builder.setMessage("This app needs internet net access. Please Turn on your internet access");
         builder.setTitle("Internet Access Needed");
         builder.setPositiveButton("Turn On", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which)
-            {
+            public void onClick(DialogInterface dialog, int which) {
                 ctx.startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
             }
         });
 
-        builder.setNegativeButton("Retry", new DialogInterface.OnClickListener()
-        {
-            public void onClick(DialogInterface dialog, int which)
-            {
+        builder.setNegativeButton("Retry", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
                 loadData();
                 return;
             }
         });
 
-        builder.setOnCancelListener(new DialogInterface.OnCancelListener()
-        {
+        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
             public void onCancel(DialogInterface dialog) {
                 return;
             }
@@ -94,28 +106,22 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             Gson gson = new Gson();
                             employeeDetails = gson.fromJson(response.toString(), EmployeeEntity[].class);
+                            Log.d(MainActivity.class.toString(),"****employeeDetails : "+employeeDetails);
                             Log.i("TAG", "Success from API - Response JSON : " + employeeDetails.toString());
-
-                            final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-
-                            EmployeesListAdaptor mAdapter = new EmployeesListAdaptor(employeeDetails[0].getEmployee(), Application.getContext());
-                            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-                            recyclerView.setLayoutManager(mLayoutManager);
-                            recyclerView.setItemAnimator(new DefaultItemAnimator());
+                            setDataInAdapter();
                             Asycdialog.dismiss();
-                            recyclerView.setAdapter(mAdapter);
 
-                        } catch(Exception e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
-                            Log.e(MainActivity.class.toString(),"Error while parsing the response. "+e.toString());
-                        }
+                            Log.e(MainActivity.class.toString(), "Error while parsing the response. " + e.toString());
+                          }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Asycdialog.dismiss();
-                        Log.e(MainActivity.class.toString(),"Negative response from the server. "+error.toString());
+                        Log.e(MainActivity.class.toString(), "Negative response from the server. " + error.toString());
                     }
                 }
         );

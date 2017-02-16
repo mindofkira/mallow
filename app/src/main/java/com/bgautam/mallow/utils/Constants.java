@@ -5,10 +5,10 @@ package com.bgautam.mallow.utils;
  */
 public class Constants {
 
+    public static String EMPLOYEE_ENDPOINT_URL = "https://private-2a004-androidtest3.apiary-mock.com/employeesList";
+
     private Constants() {
 
     }
-
-    public static String EMPLOYEE_ENDPOINT_URL = "https://private-2a004-androidtest3.apiary-mock.com/employeesList";
 
 }

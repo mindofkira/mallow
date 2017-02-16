@@ -50,7 +50,7 @@ public class DetailsActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         Employee data = (Employee) extras.get("Employee");
 
-        imageView.setImageUrl(data.getImageURL(),imageLoader);
+        imageView.setImageUrl(data.getImageURL(), imageLoader);
         firstName.setText(data.getFirstName());
         lastName.setText(data.getLastName());
         address.setText(data.getAddress());
@@ -66,8 +66,8 @@ public class DetailsActivity extends AppCompatActivity {
         nationality.setText(data.getNationality());
         language.setText(data.getLanguage());
         List<Skill> skills = data.getSkills();
-        String skillText =  "";
-        String extraSkillText =  "";
+        String skillText = "";
+        String extraSkillText = "";
 
         for (Skill skill : skills) {
 
@@ -76,7 +76,7 @@ public class DetailsActivity extends AppCompatActivity {
                 skillText += ",";
             }
 
-            if(skill.getExtraCurricular()!=null) {
+            if (skill.getExtraCurricular() != null) {
                 extraSkillText += skill.getExtraCurricular();
                 extraSkillText += ",";
             }
@@ -96,22 +96,22 @@ public class DetailsActivity extends AppCompatActivity {
 
         imageView = (NetworkImageView) findViewById(R.id.imageView);
 
-        firstName = (TextView)findViewById(R.id.firsNameText);
-        lastName = (TextView)findViewById(R.id.lastNameText);
-        address = (TextView)findViewById(R.id.addressText);
-        city = (TextView)findViewById(R.id.cityText);
-        zipcode = (TextView)findViewById(R.id.zipcodeText);
+        firstName = (TextView) findViewById(R.id.firsNameText);
+        lastName = (TextView) findViewById(R.id.lastNameText);
+        address = (TextView) findViewById(R.id.addressText);
+        city = (TextView) findViewById(R.id.cityText);
+        zipcode = (TextView) findViewById(R.id.zipcodeText);
 
-        gender = (TextView)findViewById(R.id.genderText);
-        dob = (TextView)findViewById(R.id.dobText);
-        designation = (TextView)findViewById(R.id.designationText);
-        mobile = (TextView)findViewById(R.id.phoneText);
-        email = (TextView)findViewById(R.id.emailText);
+        gender = (TextView) findViewById(R.id.genderText);
+        dob = (TextView) findViewById(R.id.dobText);
+        designation = (TextView) findViewById(R.id.designationText);
+        mobile = (TextView) findViewById(R.id.phoneText);
+        email = (TextView) findViewById(R.id.emailText);
 
-        nationality = (TextView)findViewById(R.id.nationalityText);
-        language = (TextView)findViewById(R.id.languageText);
-        techSkillSet = (TextView)findViewById(R.id.technicalSkillSetText);
-        extraSkillSet = (TextView)findViewById(R.id.extraCurricularSkillSetText);
+        nationality = (TextView) findViewById(R.id.nationalityText);
+        language = (TextView) findViewById(R.id.languageText);
+        techSkillSet = (TextView) findViewById(R.id.technicalSkillSetText);
+        extraSkillSet = (TextView) findViewById(R.id.extraCurricularSkillSetText);
 
     }
 }

@@ -1,4 +1,3 @@
-
 package com.bgautam.mallow.pojo;
 
 import com.google.gson.annotations.Expose;
@@ -8,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 // Value Object classes
-public class Employee implements Serializable{
+public class Employee implements Serializable {
 
     @SerializedName("id")
     @Expose
