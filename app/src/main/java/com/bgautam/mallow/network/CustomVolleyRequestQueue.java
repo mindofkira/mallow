@@ -14,9 +14,12 @@ import com.android.volley.toolbox.ImageLoader;
 
 /**
  * Created by gautam on 15/02/17.
+ * Helper class for fast loading of images
  */
 public class CustomVolleyRequestQueue {
 
+    //20 MB of data will be cached
+    public static final int MAX_SIZE = 20;
     private static CustomVolleyRequestQueue mInstance;
     private static Context mCtx;
     private RequestQueue mRequestQueue;
@@ -30,7 +33,7 @@ public class CustomVolleyRequestQueue {
         mImageLoader = new ImageLoader(mRequestQueue,
                 new ImageLoader.ImageCache() {
                     private final LruCache<String, Bitmap>
-                            cache = new LruCache<String, Bitmap>(20);
+                            cache = new LruCache<String, Bitmap>(MAX_SIZE);
 
                     @Override
                     public Bitmap getBitmap(String url) {
@@ -53,7 +56,8 @@ public class CustomVolleyRequestQueue {
 
     public RequestQueue getRequestQueue() {
         if (mRequestQueue == null) {
-            Cache cache = new DiskBasedCache(mCtx.getCacheDir(), 10 * 1024 * 1024);
+            // 20 MB of data will be cached in the disk
+            Cache cache = new DiskBasedCache(mCtx.getCacheDir(), MAX_SIZE * 1024 * 1024);
             Network network = new BasicNetwork(new HurlStack());
             mRequestQueue = new RequestQueue(cache, network);
             // Don't forget to start the volley request queue

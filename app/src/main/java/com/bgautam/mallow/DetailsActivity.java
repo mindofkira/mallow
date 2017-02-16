@@ -12,6 +12,9 @@ import com.bgautam.mallow.pojo.Skill;
 
 import java.util.List;
 
+/**
+ * Displays the details of the employees
+ */
 public class DetailsActivity extends AppCompatActivity {
 
     private NetworkImageView imageView;
@@ -33,22 +36,19 @@ public class DetailsActivity extends AppCompatActivity {
     private TextView techSkillSet;
     private TextView extraSkillSet;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
         initializeView();
-
         setData();
     }
 
+    // loads the data into the views
     private void setData() {
         Bundle extras = getIntent().getExtras();
         Employee data = (Employee) extras.get("Employee");
-
 
         imageView.setImageUrl(data.getImageURL(),imageLoader);
         firstName.setText(data.getFirstName());
@@ -88,9 +88,7 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
 
-
-
-
+    // initializes all the view
     private void initializeView() {
 
         imageLoader = CustomVolleyRequestQueue.getInstance(this)

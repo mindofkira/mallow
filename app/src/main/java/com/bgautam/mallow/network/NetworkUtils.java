@@ -10,6 +10,8 @@ import android.net.NetworkInfo;
  */
 public class NetworkUtils {
 
+
+    // Check whether we have an active internet connection
     public static boolean  isConnected() {
         ConnectivityManager cm = (ConnectivityManager) Application.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();

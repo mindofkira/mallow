@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
+// Value Object classes
 public class Skill  implements Serializable{
 
     @SerializedName("technical")
